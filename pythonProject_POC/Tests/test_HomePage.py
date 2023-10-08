@@ -1,6 +1,4 @@
-import os
 import time
-import allure
 
 from Config.config import TestData
 from Pages.HomePage import HomePage
@@ -24,7 +22,7 @@ class Test_HomePage(BaseTest):
         flag = self.homePage.check_make_a_payment_button_exist()
         print(flag)
         self.homePage.take_screenshot("make_a_payment_screenshot")
-        print ("take screenshot here")
+        print("take screenshot here")
         assert flag
 
     def test_make_a_payment(self):

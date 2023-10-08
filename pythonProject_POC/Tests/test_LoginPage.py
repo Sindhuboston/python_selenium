@@ -23,7 +23,8 @@ class Test_Login(BaseTest):
 
     def test_PayMyLoan_Button(self):
         self.loginPage = LoginPage(self.driver)
-        self.loginPage.do_open_pay_my_loan()
+        self.loginPage.do_pay_my_loan()
+        print("Pay My Loan button should be clicked.")
         time.sleep(2)
 
     """

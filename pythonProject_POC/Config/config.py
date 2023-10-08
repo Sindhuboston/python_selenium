@@ -13,4 +13,7 @@ class TestData:
     USER_NAME="sindhuboston@outlook.com"
     PASSWORD ="Selenium@12345"
     LOGIN_PAGE_TITLE = "HubSpot Login"
+    
+    
+    URL: https://opensource-demo.orangehrmlive.com/ 
 """
