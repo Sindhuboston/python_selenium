@@ -2,6 +2,7 @@ import os
 import allure
 import pytest
 import pytest_html
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
@@ -23,6 +24,12 @@ class BasePage:
         except Exception as e:
             print(f"Error taking screenshot: {str(e)}")
 
+    def do_hover_on_element(self, by_locator):
+        act_chains = ActionChains(self.driver)
+        locator_strategy, locator_value = by_locator  # Unpack the tuple
+        login_button_ele = self.driver.find_element(locator_strategy, locator_value)
+        act_chains.move_to_element(login_button_ele).perform()
+
     def do_click(self, by_locator):
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator)).click()
 
@@ -41,3 +48,4 @@ class BasePage:
         """Gets the title of the current page."""   """return self.driver.title"""
         WebDriverWait(self.driver, 10).until(EC.title_is(title))
         return self.driver.title
+

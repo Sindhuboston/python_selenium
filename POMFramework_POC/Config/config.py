@@ -8,6 +8,8 @@ class TestData:
     LOGIN_PAGE_TITLE = "Auto Loans | DCU"
     PAY_MY_LOAN_TITLE = "Loan Payments | DCU"
 
+    BT_URL = "https://www.tours4fun.com/login.html"
+
 """
     BASE_URL="https://app.hubspot.com/login"
     USER_NAME="sindhuboston@outlook.com"

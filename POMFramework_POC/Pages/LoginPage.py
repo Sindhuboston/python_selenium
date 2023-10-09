@@ -32,8 +32,10 @@ class LoginPage(BasePage):
 
 
     """This is used to check SignUp link"""
+
     def check_signup_link_exist(self):
-        self.log.info("SignUp link is visible: "+self.is_visible(self.SIGNUP_LINK))
+        is_visible = self.is_visible(self.SIGNUP_LINK)
+        self.log.info("SignUp link is visible: " + str(is_visible))
         return self.is_visible(self.SIGNUP_LINK)
 
     """This is used to log into app"""

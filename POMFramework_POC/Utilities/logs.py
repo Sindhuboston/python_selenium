@@ -9,7 +9,7 @@ class Logs:
         logger = logging.getLogger(logger_name)
         logger.setLevel(logLevel)
         # 2. create console handler or file handler and set the log level
-        fh = logging.FileHandler("automation.log")
+        fh = logging.FileHandler("automation1.log")
         # 3. create formatter - how you want your logs to be formatted
         formatter1 = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s',
                                       datefmt='%m/%d/%Y %I:%M:%S %p')

@@ -7,8 +7,6 @@ from Pages.LoginPage import LoginPage
 from Tests.BaseTest import BaseTest
 from Utilities.logs import Logs
 
-#from Utilities.logs import Logs
-
 """calls the BaseTest (parent) to get the web_driver"""
 
 
@@ -18,8 +16,6 @@ class Test_Login(BaseTest):
         self.loginPage = LoginPage(self.driver)
         flag = self.loginPage.check_signup_link_exist()
         print(flag)
-        #log = Logs()
-        #log.log_error_message()
         assert flag
 
     def test_login_page_title(self):
