@@ -13,6 +13,9 @@ def init_driver(request):
     yield
     web_driver.quit()
 
+
+
+
 def pytest_configure(config):
     # Get today's date
     today = datetime.now()
