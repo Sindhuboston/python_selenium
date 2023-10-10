@@ -1,13 +1,15 @@
 from selenium.webdriver.common.by import By
 from Pages.BasePage import BasePage
-from Utilities.logs import Logs
+from Utilities.utils import Utils
+from Pages.PaymentPage import PaymentPage
 
 
 class HomePage(BasePage):
-    log = Logs.log_to_file_output()
+    log = Utils.log_to_file_output()
 
     INSURANCE_LINK = (By.LINK_TEXT, "Insurance")
     MAKE_A_PAYMENT_BUTTON = (By.XPATH, "//p[@class='mobile']//a[contains(text(),'Make A Payment')]")
+    CONTINUE_TO_MAKE_A_PAYMENT_BUTTON = (By.ID, "site-leave-continue-link")  #//a[@id="site-leave-continue-link"]
 
 
     def __init__(self, driver):
@@ -15,7 +17,6 @@ class HomePage(BasePage):
         super().__init__(driver)
 
     def check_make_a_payment_button_exist(self):
-        self.log.info("Make A Payment button should be visible: "+self.is_visible(self.MAKE_A_PAYMENT_BUTTON))
         return self.is_visible(self.MAKE_A_PAYMENT_BUTTON)
 
     def get_home_page_title(self, title):
@@ -28,4 +29,7 @@ class HomePage(BasePage):
 
     def do_make_a_payment(self):
         self.do_click(self.MAKE_A_PAYMENT_BUTTON)
-        self.log.info("Make A Payment buttno should be clickable")
+        self.log.info("Make A Payment button should be clicked.")
+        self.do_click(self.CONTINUE_TO_MAKE_A_PAYMENT_BUTTON)
+        self.log.info("Clicked on Continue to move to make a payment.")
+        return PaymentPage(self.driver)

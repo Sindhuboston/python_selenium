@@ -1,7 +1,7 @@
 import inspect
 import logging
-import Utilities
-class Logs:
+from openpyxl import Workbook, load_workbook
+class Utils:
     def log_to_file_output(logLevel=logging.DEBUG):
         #1. Set class/method name from where its called
         logger_name = inspect.stack()[1][3]
@@ -18,3 +18,20 @@ class Logs:
         # 5. add console handler to logger
         logger.addHandler(fh)
         return logger
+
+
+    def read_data_from_excel(file_name, sheet):
+        datalist = []
+        wb= load_workbook(filename=file_name )
+        sh = wb[sheet]
+
+        row_ct = sh.max_row
+        col_ct = sh.max_column
+
+        for i in range(1, row_ct+1):
+            row = []
+            for j in range(1, col_ct+1):
+                row.append(sh.cell(row=1, column=j).value)
+            datalist.append(row)
+        return datalist
+

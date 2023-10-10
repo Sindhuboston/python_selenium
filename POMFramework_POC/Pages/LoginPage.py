@@ -1,17 +1,17 @@
-import logging
+import time
 
 from selenium.webdriver.common.by import By
 
 from Config.config import TestData
 from Pages.BasePage import BasePage
 from Pages.HomePage import HomePage
-from Utilities.logs import Logs
+from Utilities.utils import Utils
 
 class LoginPage(BasePage):
-    log = Logs.log_to_file_output()
+    log = Utils.log_to_file_output()
 
-    USERNAME = (By.XPATH, "//input[@name='username' and @placeholder='Username']")
-    PASSWORD = (By.XPATH, "//input[@name='password' and @placeholder='Password']")
+    USERNAME = (By.XPATH, "//input[@class='form-control memberNumber']")
+    PASSWORD = (By.XPATH, "//input[@class='form-control' and @name='password']")
     LOGIN_BUTTON = (By.XPATH, "//button[contains(text(),'Login')]")
     PAY_MY_LOAN_LINK = (By.LINK_TEXT, "PAY MY LOAN")
     SIGNUP_LINK = (By.LINK_TEXT, "Forgot Username/Password?")
@@ -27,7 +27,7 @@ class LoginPage(BasePage):
 
     """This is used to get the page title"""
     def get_login_page_title(self, title):
-        self.log.info("title of the page: " + title)
+        self.log.info("title = " + title)
         return self.get_title(title)
 
 
@@ -40,9 +40,10 @@ class LoginPage(BasePage):
 
     """This is used to log into app"""
     def do_login(self, username, password):
-        self.do_click(self.LOGIN_BUTTON)
         self.do_send_text(self.USERNAME, username)
         self.do_send_text(self.PASSWORD, password)
+        time.sleep(2)
+        self.do_click(self.LOGIN_BUTTON)
 
     def do_pay_my_loan(self):
         self.do_click(self.PAY_MY_LOAN_LINK)

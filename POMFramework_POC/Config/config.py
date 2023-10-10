@@ -7,15 +7,16 @@ class TestData:
     PASSWORD = "admin123"
     LOGIN_PAGE_TITLE = "Auto Loans | DCU"
     PAY_MY_LOAN_TITLE = "Loan Payments | DCU"
+    MEMBER_NUMBER = "321"
+    LOAN_NUMBER = "987"
+    SSN_LAST_DIGITS = "3577"
 
-    BT_URL = "https://www.tours4fun.com/login.html"
 
-"""
-    BASE_URL="https://app.hubspot.com/login"
-    USER_NAME="sindhuboston@outlook.com"
-    PASSWORD ="Selenium@12345"
-    LOGIN_PAGE_TITLE = "HubSpot Login"
-    
-    
-    URL: https://opensource-demo.orangehrmlive.com/ 
-"""
+    """
+        BT_URL = "https://www.tours4fun.com/login.html"
+        BASE_URL="https://app.hubspot.com/login"
+        URL: https://opensource-demo.orangehrmlive.com/
+        USER_NAME="sindhuboston@outlook.com"
+        PASSWORD ="Selenium@12345"
+        LOGIN_PAGE_TITLE = "HubSpot Login"
+    """
