@@ -2,12 +2,12 @@ import time
 
 from selenium.webdriver.common.by import By
 from Config.config import TestData
-from Utilities.utils import Logs
+from Utilities.utils import Utils
 from Pages.BasePage import BasePage
 
 
 class PaymentPage(BasePage):
-    log = Logs.log_to_file_output()
+    log = Utils.log_to_file_output()
     """
     MEMBER_NUMBER_TEXTBOX = (By.ID, "membernumber")
     LOAN_NUMBER_TEXTBOX = (By.ID, "customernumber")
