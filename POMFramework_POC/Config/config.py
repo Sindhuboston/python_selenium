@@ -11,13 +11,13 @@ class TestData:
     LOAN_NUMBER = "987"
     SSN_LAST_DIGITS = "3577"
 
-    EXCEL_FILE_PATH = "C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel.xlsx"
-    SHEET_NAME = "Sheet1"
-    """
-        BT_URL = "https://www.tours4fun.com/login.html"
-        BASE_URL="https://app.hubspot.com/login"
-        URL: https://opensource-demo.orangehrmlive.com/
-        USER_NAME="sindhuboston@outlook.com"
-        PASSWORD ="Selenium@12345"
-        LOGIN_PAGE_TITLE = "HubSpot Login"
-    """
+    EXCEL_FILE_PATH = None
+    SHEET_NAME = None
+
+    @classmethod
+    def set_excel_file_path(cls, file_path):
+        cls.EXCEL_FILE_PATH = file_path
+
+    @classmethod
+    def set_sheet_name(cls, sheet_name):
+        cls.SHEET_NAME = sheet_name

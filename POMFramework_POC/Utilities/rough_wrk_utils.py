@@ -1,12 +1,10 @@
 import openpyxl
 import inspect
 import logging
-from openpyxl import Workbook, load_workbook
 from Config.config import TestData
 
 
 class Utils:
-    @staticmethod
     def log_to_file_output(logLevel=logging.DEBUG):
         # 1. Set class/method name from where its called
         logger_name = inspect.stack()[1][3]
@@ -27,9 +25,13 @@ class Utils:
 
     def get_data(column_name):
         # Specify the Excel file path
+        # excel_file_path = "C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel.xlsx"
+        # sheet_name = "Sheet1"
+        # row_number = 4  # Use an integer, not a string
+
         excel_file_path = TestData.EXCEL_FILE_PATH
         sheet_name = TestData.SHEET_NAME
-        row_number = 4  # Use an integer, not a string
+        row_number = 4
 
         try:
             workbook = openpyxl.load_workbook(excel_file_path)

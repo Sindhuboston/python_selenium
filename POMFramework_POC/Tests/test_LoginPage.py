@@ -1,4 +1,4 @@
-
+import pytest
 import time
 from Config.config import TestData
 from Pages.LoginPage import LoginPage
@@ -10,6 +10,10 @@ from Utilities.utils import Utils
 
 class Test_Login(BaseTest):
     log=Utils.log_to_file_output()
+
+    # the following inputs can be refactored to come from zepyr
+    TestData.set_excel_file_path("C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel.xlsx")
+    TestData.set_sheet_name("Sheet1")
 
     def test_data_from_excel(self):
         vregion = Utils.get_data("Region")

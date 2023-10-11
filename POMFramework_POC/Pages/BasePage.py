@@ -1,11 +1,8 @@
 import os
-import allure
-import pytest
-import pytest_html
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from datetime import datetime
+
 
 """This class is the parent of all pages"""
 """It contains all generic methods & utilities for all the pages"""
