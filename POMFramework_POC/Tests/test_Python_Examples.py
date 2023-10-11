@@ -1,6 +1,6 @@
 import openpyxl
 
-def test_get_row_data():
+def get_data():
     # Specify the Excel file path
     excel_file_path = "C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel.xlsx"
     sheet_name = "Sheet1"
@@ -28,4 +28,4 @@ def test_get_row_data():
         return {}
 
 # Call the function to execute the code
-test_get_row_data()
+get_data()

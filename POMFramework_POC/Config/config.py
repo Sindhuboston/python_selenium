@@ -11,7 +11,8 @@ class TestData:
     LOAN_NUMBER = "987"
     SSN_LAST_DIGITS = "3577"
 
-
+    EXCEL_FILE_PATH = "C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel.xlsx"
+    SHEET_NAME = "Sheet1"
     """
         BT_URL = "https://www.tours4fun.com/login.html"
         BASE_URL="https://app.hubspot.com/login"
