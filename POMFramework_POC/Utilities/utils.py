@@ -37,7 +37,7 @@ class Utils:
             headings = [workSheet.cell(1, col).value for col in range(1, workSheet.max_column + 1)]
             row_data = {}
 
-            print("maximum col: " + str(workSheet.max_column))
+            """print("maximum col: " + str(workSheet.max_column))"""
 
             for col_num in range(1, workSheet.max_column + 1):
                 heading = headings[col_num - 1]
@@ -45,8 +45,10 @@ class Utils:
                 row_data[heading] = value
 
             # Print the data
+            """
             for heading, value in row_data.items():
                 print(f"{heading}: {value}")
+            """
 
             if column_name in row_data:
                 value = row_data[column_name]

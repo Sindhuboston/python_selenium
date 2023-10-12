@@ -11,18 +11,18 @@ from Utilities.utils import Utils
 class Test_Login(BaseTest):
     log=Utils.log_to_file_output()
 
-    # the following inputs can be refactored to come from zepyr
-    TestData.set_excel_file_path("C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel.xlsx")
-    TestData.set_sheet_name("Sheet1")
+    # the following inputs can be refactored to come from zephyr TC
+    TestData.set_excel_file_path(TestData.TD_DCU_Workbook)
+    TestData.set_sheet_name(TestData.TD_DCU_Sheet)
 
     def test_data_from_excel(self):
         vregion = Utils.get_data("Region")
         vusername = Utils.get_data("username")
         vpolicynumber = Utils.get_data("policynumber")
 
-        print("\nlogin page username: " + vusername + "\n")
-        print("\nlogin page region: " + vregion + "\n")
-        print("\nlogin page policynumber: " + str(vpolicynumber) +"\n")
+        print("\nfrom Utilities to TestLogin - username: " + vusername + "\n")
+        print("\nfrom Utilities to TestLogin - region:" + vregion + "\n")
+        print("\nfrom Utilities to TestLogin - policynumber:" + str(vpolicynumber) +"\n")
 
     def test_signup_link_visible(self):
         self.loginPage = LoginPage(self.driver)

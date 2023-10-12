@@ -11,6 +11,18 @@ class TestData:
     LOAN_NUMBER = "987"
     SSN_LAST_DIGITS = "3577"
 
+    TD_DCU_Workbook = "C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel.xlsx"
+    TD_DCU_Sheet = "Sheet1"
+
+    #SkillBoard locators:
+    URL_SKILLBOARD = "https://skillboard.org/"
+    FIRSTNAME = "Sindhu"
+    LASTNAME = "Boston"
+    USERNAME = "sindhuboston"
+    TD_SkillBoard_Workbook = "C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel.xlsx"
+    TD_SkillBoard_Sheet = "Sheet1"
+
+
     EXCEL_FILE_PATH = None
     SHEET_NAME = None
 
