@@ -3,6 +3,11 @@ from Pages.BasePage import BasePage
 from Config.config import TestData
 from Utilities.utils import Utils
 
+# The 'LoginSkillBoardPage' class defines the Page Object for the SkillBoard login and signup page.
+# It encapsulates the page elements and provides methods for interacting with these elements.
+# Page elements, identified by locators, are defined as class attributes for reuse in methods.
+# The class includes a constructor to initialize the page and navigate to the SkillBoard URL.
+# Logging is used to record actions and errors during page interactions for debugging and reporting.
 
 class LoginSkillBoardPage(BasePage):
 

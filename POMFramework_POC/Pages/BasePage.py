@@ -5,8 +5,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Utilities.utils import Utils
 
-"""This class is the parent of all pages"""
-"""It contains all generic methods & utilities for all the pages"""
+# """This class is the parent of all pages"""
+# """It contains all generic methods & utilities for all the pages"""
 
 class BasePage:
 

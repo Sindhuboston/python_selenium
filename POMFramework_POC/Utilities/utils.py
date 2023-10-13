@@ -4,6 +4,12 @@ import logging
 from openpyxl import Workbook, load_workbook
 from Config.config import TestData
 
+# The 'Utils' class serves as a utility class within a test automation framework and provides various helper methods.
+# It is designed to offer convenient functions for logging, reading data from Excel files, and other utility functions.
+# The key methods and features within this class include:
+# - 'log_to_file_output': A method to create and configure logging for test activities, which can be used for debugging and reporting.
+# - 'get_data': A method for reading data from an Excel file, specified by the 'TestData' class, based on the provided column name.
+# Overall, the 'Utils' class simplifies common tasks and enhances test automation by providing reusable utility methods.
 
 class Utils:
     @staticmethod
@@ -14,7 +20,7 @@ class Utils:
         logger = logging.getLogger(logger_name)
         logger.setLevel(logLevel)
         # 2. create console handler or file handler and set the log level
-        fh = logging.FileHandler("automation1.log")
+        fh = logging.FileHandler("automation.log")
         # 3. create formatter - how you want your logs to be formatted
         formatter1 = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s',
                                        datefmt='%m/%d/%Y %I:%M:%S %p')
@@ -24,7 +30,8 @@ class Utils:
         logger.addHandler(fh)
         return logger
 
-
+    # - 'get_data': A method for reading data from an Excel file, specified by the 'TestData' class, based on the provided column name.
+    # The 'get_data' method retrieves data from an Excel file, allowing easy access to test data during test case execution.
     def get_data(column_name):
         # Specify the Excel file path
         excel_file_path = TestData.EXCEL_FILE_PATH

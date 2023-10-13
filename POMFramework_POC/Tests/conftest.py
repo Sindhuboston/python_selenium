@@ -4,7 +4,10 @@ import pytest
 from selenium import webdriver
 
 
-@pytest.fixture(params=["chrome"], scope='class')
+# This file contains configuration settings and fixtures for a Pytest-based automated testing framework.
+# It is responsible for initializing web drivers, configuring report generation, and defining test-related configurations.
+
+@pytest.fixture(params=["chrome", "firefox"], scope='class')
 def init_driver(request):
     if request.param == "chrome":
         web_driver = webdriver.Chrome()

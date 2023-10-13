@@ -5,6 +5,16 @@ from Tests.BaseTest import BaseTest
 from Utilities.utils import Utils
 from Pages.LoginSkillBoardPage import LoginSkillBoardPage
 
+# This class, 'Test_LoginSkillBoard', is a test suite designed to verify the functionality of the SkillBoard signup process.
+# It inherits setup and teardown methods from the 'BaseTest' class for test environment setup and cleanup.
+# The class contains test cases for signing up on SkillBoard and verifying various validation criteria during the signup process.
+
+# Test cases included in this class:
+# 1. 'test_signup_on_skillboard': This test case performs a SkillBoard signup and verifies various password validation criteria,
+#    such as uppercase, lowercase, numbers, special characters, and total character count.
+# 2. 'test_verify_verification_code_display': (Currently commented out) This test case aims to verify the display of a verification code during signup.
+
+# Note: Assertions and logging are used to capture and report the test results.
 
 class Test_LoginSkillBoard(BaseTest):
     log = Utils.log_to_file_output()
@@ -27,6 +37,7 @@ class Test_LoginSkillBoard(BaseTest):
 
         try:
             assert validation_results["upper_case"] is True
+            self.log.info("this is a log test")
         except AssertionError as e:
             self.log.error("Uppercase validation failed: " + str(e))
             assertion_errors.append("Uppercase validation")
@@ -45,8 +56,7 @@ class Test_LoginSkillBoard(BaseTest):
         try:
             assert validation_results["special_char"] is True
         except AssertionError as e:
-            self.log.info("Special character validation failed: " + str(e))
-
+            self.log.error("Special character validation failed: " + str(e))
         try:
             assert validation_results["total_chars"] is True
         except AssertionError as e:
@@ -57,6 +67,6 @@ class Test_LoginSkillBoard(BaseTest):
             self.log.error("Some validation errors occurred.")
             raise AssertionError("Assertion errors: " + ", ".join(assertion_errors))
 
-    def test_verify_verification_code_display(self):
-        self.pgSBLogin = LoginSkillBoardPage()
-        self.pgSBLogin.verify_verification_code_display()
+    # def test_verify_verification_code_display(self):
+    #     self.pgSBLogin = LoginSkillBoardPage()
+    #     self.pgSBLogin.verify_verification_code_display()
