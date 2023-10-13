@@ -30,14 +30,18 @@ class Utils:
         logger.addHandler(fh)
         return logger
 
+
+
     # - 'get_data': A method for reading data from an Excel file, specified by the 'TestData' class, based on the provided column name.
     # The 'get_data' method retrieves data from an Excel file, allowing easy access to test data during test case execution.
+    # It will search for the test case name and return the data based on the specified column.
+    # If duplicate testcases are found 1st one will be executed.
     @staticmethod
     def get_data(column_name):
         # Specify the Excel file path
         excel_file_path = TestData.EXCEL_FILE_PATH
         sheet_name = TestData.SHEET_NAME
-        row_number = 4  # Use an integer, not a string
+        test_case_name = TestData.TESTCASE_NAME
 
         try:
             workbook = openpyxl.load_workbook(excel_file_path)
@@ -45,30 +49,70 @@ class Utils:
             headings = [worksheet.cell(1, col).value for col in range(1, worksheet.max_column + 1)]
             row_data = {}
 
-            """print("maximum col: " + str(workSheet.max_column))"""
+            # Find the row number by test case name
+            row_number = None
+            for row in worksheet.iter_rows(min_row=2, max_row=worksheet.max_row, min_col=1, max_col=1):
+                for cell in row:
+                    if cell.value == test_case_name:
+                        row_number = cell.row
+                        break
+                if row_number is not None:
+                    break
 
-            for col_num in range(1, worksheet.max_column + 1):
-                heading = headings[col_num - 1]
-                value = worksheet.cell(row_number, col_num).value
-                row_data[heading] = value
 
-            # Print the data
-            """
-            for heading, value in row_data.items():
-                print(f"{heading}: {value}")
-            """
 
-            if column_name in row_data:
-                value = row_data[column_name]
-                print(f"{column_name}: {value}")  # Print the value of the specified column
-                return value
+            if row_number is not None:
+                for col_num in range(1, worksheet.max_column + 1):
+                    heading = headings[col_num - 1]
+                    value = worksheet.cell(row_number, col_num).value
+                    row_data[heading] = value
+
+                # Print the data
+                if column_name in row_data:
+                    value = row_data[column_name]
+                    print(f"{column_name} for test case '{test_case_name}': {value}")
+                    return value
+                else:
+                    print(f"Column name '{column_name}' is not in the excel file.")
+                    return None
             else:
-                print("column name is not in the excel file.")
+                print(f"Test case name '{test_case_name}' not found in the excel file.")
                 return None
 
+        except Exception as e:
+            print(f"Error while getting data for test case '{test_case_name}' and column '{column_name}': {str(e)}")
+            return None
+
+    @staticmethod
+    def get_ddt():
+        # Specify the Excel file path
+        excel_file_path = TestData.EXCEL_FILE_PATH
+        sheet_name = TestData.SHEET_NAME
+
+        try:
+            workbook = openpyxl.load_workbook(excel_file_path)
+            worksheet = workbook[sheet_name]
+
+            # Retrieve the column names (headings) from the first row of the Excel sheet
+            headings = [worksheet.cell(1, col).value for col in range(1, worksheet.max_column + 1)]
+
+            test_data = []
+
+            for row_number in range(2, worksheet.max_row + 1):
+                row_data = {}
+                for col_num in range(1, worksheet.max_column + 1):
+                    heading = headings[col_num - 1]
+                    value = worksheet.cell(row_number, col_num).value
+                    row_data[heading] = value
+
+                test_data.append(row_data)
+
+            return test_data
 
         except Exception as e:
-            print(f"Error while getting data for column '{column_name}': {str(e)}")
-            return None #return {}
+            print(f"Error while getting test data: {str(e)}")
+            return []
+
+
 
 

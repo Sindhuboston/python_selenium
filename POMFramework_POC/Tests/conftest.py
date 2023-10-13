@@ -1,3 +1,4 @@
+import sys
 from datetime import datetime
 from pathlib import Path
 import pytest
@@ -21,15 +22,24 @@ def init_driver(request):
 def pytest_configure(config):
     # Get today's date
     today = datetime.now()
+
     # Define the location for the reports
     timestamp = today.strftime('%m-%d-%Y %I-%M-%S %p')
     report_dir = Path("Reports", f"Report_On_{timestamp}")
     report_dir.mkdir(parents=True, exist_ok=True)
+
     # Create an HTML file:
     pytest_html = report_dir / f"Report_{today.strftime('%Y%m%d%H%M')}.html"
     config.option.htmlpath = pytest_html
     config.option.self_contained_html = True
 
+    # # Add custom metadata to the report
+    # config._metadata['Product Name'] = 'Skill Board'
+    # config._metadata['Module'] = 'Smoke Test'
+
+    # Get the Python version and add it to metadata
+    # python_version = sys.version.split('\n')[0]
+    # config._metadata['Python'] = python_version
 
 def pytest_html_report_title(report):
     report.title = "POC Test Report"
