@@ -45,6 +45,14 @@ class BasePage:
         except Exception as e:
             print(f"Error sending text: '{text}' to element located by: {by_locator}\nError message: {str(e)}")
 
+    def do_clear(self, by_locator):
+        try:
+            WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator)).clear()
+        except Exception as e:
+            print(f"Error clearing the text in the {by_locator}: {str(e)}")
+
+
+
     def do_get_element_text(self, by_locator):
         try:
             element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator))

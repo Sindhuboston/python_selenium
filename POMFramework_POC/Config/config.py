@@ -2,6 +2,7 @@
 # The 'TestData' class serves as a configuration and data storage class for test-related constants and paths.
 # It centralizes various parameters, including browser driver paths, URLs, and excel file paths for test data.
 # The class also includes class methods for setting the Excel file path and sheet name dynamically.
+# class attributes & @classmethods behave like getter & setter in java.
 
 class TestData:
     EXCEL_FILE_PATH = None

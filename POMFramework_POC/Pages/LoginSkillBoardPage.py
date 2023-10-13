@@ -19,6 +19,7 @@ class LoginSkillBoardPage(BasePage):
     PASSWORD = (By.ID, "password")
     T_AND_C_AGREE_MSG = (By.XPATH, "//P[contains(text(),'you agree')]")
     SUBMIT_SIGNUP = (By.XPATH, "//button[@type='submit']")
+    CANCEL_SIGNUP = (By.XPATH, "//button[text()='Cancel']")
     SB_LOGO = (By.XPATH, "(//img[@src='/SkillBoardBadge.png'])[last()]")
     VERIFICATION_CODE_MSG = (By.XPATH, "//p[contains(text(),'enter the verification code received on your email.')]")
     CONFIRM_CODE_BUTTON = (By.XPATH, "//button[text()='Confirm Code']")
@@ -47,12 +48,18 @@ class LoginSkillBoardPage(BasePage):
         try:
             self.do_click(self.SIGN_UP)
             self.log.info("Sign Up button is clicked on the website.")
+
+            self.do_clear(self.FIRSTNAME)
             self.do_send_text(self.FIRSTNAME, firstname)
+            self.do_clear(self.LASTNAME)
             self.do_send_text(self.LASTNAME, lastname)
+            self.do_clear(self.USERNAME)
             self.do_send_text(self.USERNAME, username)
+            self.do_clear(self.EMAIL)
             self.do_send_text(self.EMAIL, user_email)
+            self.do_clear(self.PASSWORD)
             self.do_send_text(self.PASSWORD, password)
-            self.do_click(self.SUBMIT_SIGNUP)
+            self.do_click(self.CANCEL_SIGNUP)
             self.log.info("Credentials are entered.")
 
             # Perform multiple validations and log the results
@@ -75,6 +82,7 @@ class LoginSkillBoardPage(BasePage):
             }
         except Exception as e:
             self.log.error(f"An error occurred in the do_signup_on_skillboard: {str(e)}")
+
 
     def verify_verification_code_display(self):
         try:
