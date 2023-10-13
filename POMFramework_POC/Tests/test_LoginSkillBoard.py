@@ -1,5 +1,3 @@
-import time
-
 from Config.config import TestData
 from Tests.BaseTest import BaseTest
 from Utilities.utils import Utils
@@ -22,7 +20,6 @@ class Test_LoginSkillBoard(BaseTest):
     TestData.set_sheet_name(TestData.TD_SkillBoard_Sheet)
 
     def test_signup_on_skillboard(self):
-
         self.pgSBLogin = LoginSkillBoardPage(self.driver)
         firstname = Utils.get_data("firstname")
         lastname = Utils.get_data("lastname")
@@ -38,29 +35,36 @@ class Test_LoginSkillBoard(BaseTest):
         try:
             assert validation_results["upper_case"] is True
             self.log.info("this is a log test")
+
         except AssertionError as e:
             self.log.error("Uppercase validation failed: " + str(e))
             assertion_errors.append("Uppercase validation")
+            self.driver.save_screenshot(".\\Reports\\" + "upper_case.png")
 
         try:
             assert validation_results["lower_case"] is True
         except AssertionError as e:
             self.log.error("Lowercase validation failed: " + str(e))
             assertion_errors.append("Lowercase validation")
+            self.driver.save_screenshot(".\\Reports\\" + "lower_case.png")
 
         try:
             assert validation_results["number"] is True
         except AssertionError as e:
             self.log.error("Number validation failed: " + str(e))
+            self.driver.save_screenshot(".\\Reports\\" + "number.png")
 
         try:
             assert validation_results["special_char"] is True
         except AssertionError as e:
+            self.driver.save_screenshot(".\\Reports\\" + "special_char.png")
             self.log.error("Special character validation failed: " + str(e))
+
         try:
             assert validation_results["total_chars"] is True
         except AssertionError as e:
             self.log.error("Total characters validation failed: " + str(e))
+            self.driver.save_screenshot(".\\Reports\\" + "total_chars.png")
 
         if assertion_errors:
                 #Handle the assertion errors as needed, you can raise an exception here if necessary

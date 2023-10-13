@@ -32,6 +32,7 @@ class Utils:
 
     # - 'get_data': A method for reading data from an Excel file, specified by the 'TestData' class, based on the provided column name.
     # The 'get_data' method retrieves data from an Excel file, allowing easy access to test data during test case execution.
+    @staticmethod
     def get_data(column_name):
         # Specify the Excel file path
         excel_file_path = TestData.EXCEL_FILE_PATH
@@ -40,15 +41,15 @@ class Utils:
 
         try:
             workbook = openpyxl.load_workbook(excel_file_path)
-            workSheet = workbook[sheet_name]
-            headings = [workSheet.cell(1, col).value for col in range(1, workSheet.max_column + 1)]
+            worksheet = workbook[sheet_name]
+            headings = [worksheet.cell(1, col).value for col in range(1, worksheet.max_column + 1)]
             row_data = {}
 
             """print("maximum col: " + str(workSheet.max_column))"""
 
-            for col_num in range(1, workSheet.max_column + 1):
+            for col_num in range(1, worksheet.max_column + 1):
                 heading = headings[col_num - 1]
-                value = workSheet.cell(row_number, col_num).value
+                value = worksheet.cell(row_number, col_num).value
                 row_data[heading] = value
 
             # Print the data
@@ -62,9 +63,12 @@ class Utils:
                 print(f"{column_name}: {value}")  # Print the value of the specified column
                 return value
             else:
+                print("column name is not in the excel file.")
                 return None
 
+
         except Exception as e:
-            print("E: ", e)
-            return {}
+            print(f"Error while getting data for column '{column_name}': {str(e)}")
+            return None #return {}
+
 
