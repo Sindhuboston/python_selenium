@@ -67,10 +67,13 @@ class Utils:
                     value = worksheet.cell(row_number, col_num).value
                     row_data[heading] = value
 
+                #print("maximum col: " + str(worksheet.max_column))
+
                 # Print the data
                 if column_name in row_data:
                     value = row_data[column_name]
-                    print(f"{column_name} for test case '{test_case_name}': {value}")
+                    print(f"column:{column_name} = {value}")
+
                     return value
                 else:
                     print(f"Column name '{column_name}' is not in the excel file.")
