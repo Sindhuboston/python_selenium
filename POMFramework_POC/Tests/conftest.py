@@ -3,6 +3,7 @@ from datetime import datetime
 from pathlib import Path
 import pytest
 from selenium import webdriver
+from Utilities.utils import Utils
 
 
 # This file contains configuration settings and fixtures for a Pytest-based automated testing framework.
@@ -12,8 +13,10 @@ from selenium import webdriver
 def init_driver(request):
     if request.param == "chrome":
         web_driver = webdriver.Chrome()
+        Utils.log_to_file_output().info("---------- Launching Chrome browser ---------- ")
     elif request.param == "firefox":
         web_driver = webdriver.Firefox()
+        Utils.log_to_file_output().info("---------- Launching Firefox browser ---------- ")
     request.cls.driver = web_driver
     yield
     web_driver.quit()
@@ -43,3 +46,11 @@ def pytest_configure(config):
 
 def pytest_html_report_title(report):
     report.title = "POC Test Report"
+
+# def pytest_html_results_table_row(report, cells):
+#     if 'failed' in cells[-1]:
+#         if 'validation_error' in cells[-2]:
+#             cells[0] = '<b>Validation Error</b>'
+#         else:
+#             cells[0] = '<b>Failed</b>'
+

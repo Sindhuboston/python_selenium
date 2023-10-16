@@ -35,7 +35,7 @@ class LoginSkillBoardPage(BasePage):
         self.driver = driver
         super().__init__(driver)
         self.driver.get(TestData.URL_SKILLBOARD)
-        self.log.info("URL: "+ TestData.URL_SKILLBOARD)
+        self.log.info(f"---------- URL: {TestData.URL_SKILLBOARD}")
 
     def do_check_signup_sblogo(self):
         try:
@@ -47,7 +47,7 @@ class LoginSkillBoardPage(BasePage):
     def do_signup_on_skillboard(self, firstname, lastname, username, user_email, password):
         try:
             self.do_click(self.SIGN_UP)
-            self.log.info("Sign Up button is clicked on the website.")
+            self.log.info("---------- Sign Up button is clicked on the website.")
 
             self.do_clear(self.FIRSTNAME)
             self.do_send_text(self.FIRSTNAME, firstname)
@@ -59,8 +59,7 @@ class LoginSkillBoardPage(BasePage):
             self.do_send_text(self.EMAIL, user_email)
             self.do_clear(self.PASSWORD)
             self.do_send_text(self.PASSWORD, password)
-            self.do_click(self.CANCEL_SIGNUP)
-            self.log.info("Credentials are entered.")
+            self.log.info("---------- Signup details are entered.")
 
             # Perform multiple validations and log the results
             is_upper_case_visible = self.is_visible(self.PSW_UPPER_CASE)
@@ -69,8 +68,9 @@ class LoginSkillBoardPage(BasePage):
             is_special_char_visible = self.is_visible(self.PSW_SPECIAL_CHAR)
             is_total_chars_visible = self.is_visible(self.PSW_TOTAL_CHARS)
 
-            self.log.info("Password validations are complete.")
-            self.log.info("Sign Up button in the pop-up window is clicked.")
+            self.do_click(self.CANCEL_SIGNUP)
+            self.log.info("---------- Cancel button in the pop-up window is clicked.")
+
 
             # You can return the validation results as needed, e.g., a dictionary or list.
             return {
@@ -81,7 +81,7 @@ class LoginSkillBoardPage(BasePage):
                 "total_chars": is_total_chars_visible
             }
         except Exception as e:
-            self.log.error(f"An error occurred in the do_signup_on_skillboard: {str(e)}")
+            self.log.error(f"---------- An error occurred in the do_signup_on_skillboard: {str(e)}")
 
 
     def verify_verification_code_display(self):
@@ -90,5 +90,5 @@ class LoginSkillBoardPage(BasePage):
             self.is_visible(self.VERIFICATION_CODE_MSG)
             self.is_visible(self.CONFIRM_CODE_BUTTON)
         except Exception as e:
-            self.log.error(f"An error occurred in the verify_verification_code_display(): {str(e)}")
+            self.log.error(f"---------- An error occurred in the verify_verification_code_display(): {str(e)}")
 
