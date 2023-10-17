@@ -6,7 +6,7 @@ from Utilities.utils import Utils
 
 class Test_SignSB_DDT(BaseTest):
     log = Utils.log_to_file_output()
-    TestData.set_excel_file_path(TestData.TD_SkillBoard_Workbook)
+    TestData.set_excel_file_path(TestData.TD_SkillBoard_DDT_Workbook)
     TestData.set_sheet_name(TestData.TD_SkillBoard_Sheet)
 
     def test_ddt_on_SB_signup(self):
@@ -66,4 +66,3 @@ class Test_SignSB_DDT(BaseTest):
                 # Handle the assertion errors as needed, you can raise an exception here if necessary
                 self.log.error("Some validation errors occurred.")
                 raise AssertionError("Assertion errors: " + ", ".join(assertion_errors))
-            

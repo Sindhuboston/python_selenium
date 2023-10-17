@@ -33,4 +33,3 @@ class Test_HomePage(BaseTest):
         time.sleep(2)
         homePage.do_make_a_payment()
         time.sleep(2)
-

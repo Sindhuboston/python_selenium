@@ -53,4 +53,3 @@ def pytest_html_report_title(report):
 #             cells[0] = '<b>Validation Error</b>'
 #         else:
 #             cells[0] = '<b>Failed</b>'
-

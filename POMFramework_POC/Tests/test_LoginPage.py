@@ -9,7 +9,7 @@ from Utilities.utils import Utils
 
 
 class Test_Login(BaseTest):
-    log=Utils.log_to_file_output()
+    log = Utils.log_to_file_output()
 
     # the following inputs can be refactored to come from zephyr TC
     TestData.set_excel_file_path(TestData.TD_DCU_Workbook)
@@ -22,7 +22,7 @@ class Test_Login(BaseTest):
 
         print("\nfrom Utilities to TestLogin - username: " + vusername + "\n")
         print("\nfrom Utilities to TestLogin - region:" + vregion + "\n")
-        print("\nfrom Utilities to TestLogin - policynumber:" + str(vpolicynumber) +"\n")
+        print("\nfrom Utilities to TestLogin - policynumber:" + str(vpolicynumber) + "\n")
 
     def test_signup_link_visible(self):
         self.loginPage = LoginPage(self.driver)
@@ -43,7 +43,7 @@ class Test_Login(BaseTest):
         self.loginPage.do_login(TestData.USER_NAME, TestData.PASSWORD)
         time.sleep(2)
 
-    
+
     def test_PayMyLoan_Button(self):
         self.loginPage = LoginPage(self.driver)
         self.loginPage.do_pay_my_loan()

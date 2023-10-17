@@ -88,10 +88,10 @@ class Test_LoginSkillBoard(BaseTest):
             self.log.info("---------- No validation errors, closing the browser.")
             #self.driver.close()
 
+    def test_successful_login_to_skillboard(self):
+        TestData.set_testcase_name("test_successful_login_to_skillboard")
+        self.pgSBLogin = LoginSkillBoardPage(self.driver)
 
-
-
-
-    # def test_verify_verification_code_display(self):
-    #     self.pgSBLogin = LoginSkillBoardPage()
-    #     self.pgSBLogin.verify_verification_code_display()
+        username = Utils.get_data("username")
+        password = Utils.get_data("password")
+        self.pgSBLogin.do_login_into_skillboard(username, password)

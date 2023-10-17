@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from Pages.BasePage import BasePage
 from Config.config import TestData
@@ -18,16 +20,20 @@ class LoginSkillBoardPage(BasePage):
     EMAIL = (By.ID, "email")
     PASSWORD = (By.ID, "password")
     T_AND_C_AGREE_MSG = (By.XPATH, "//P[contains(text(),'you agree')]")
-    SUBMIT_SIGNUP = (By.XPATH, "//button[@type='submit']")
+    SUBMIT = (By.XPATH, "//button[@type='submit']")
     CANCEL_SIGNUP = (By.XPATH, "//button[text()='Cancel']")
+
     SB_LOGO = (By.XPATH, "(//img[@src='/SkillBoardBadge.png'])[last()]")
     VERIFICATION_CODE_MSG = (By.XPATH, "//p[contains(text(),'enter the verification code received on your email.')]")
     CONFIRM_CODE_BUTTON = (By.XPATH, "//button[text()='Confirm Code']")
+
     PSW_UPPER_CASE = (By.XPATH, "//p[contains(text(),'upper case') and contains(@class,'green')]")
     PSW_LOWER_CASE = (By.XPATH, "//p[contains(text(),'lower case') and contains(@class,'green')]")
     PSW_NUMBER = (By.XPATH, "//p[contains(text(),'number') and contains(@class,'green')]")
     PSW_SPECIAL_CHAR = (By.XPATH, "//p[contains(text(),'special') and contains(@class,'green')]")
     PSW_TOTAL_CHARS = (By.XPATH, "//p[contains(text(),'8 char') and contains(@class,'green')]")
+
+    SIGN_IN = (By.XPATH, "//button[text()='Sign in']")
 
     log = Utils().log_to_file_output()
 
@@ -84,11 +90,25 @@ class LoginSkillBoardPage(BasePage):
             self.log.error(f"---------- An error occurred in the do_signup_on_skillboard: {str(e)}")
 
 
-    def verify_verification_code_display(self):
+    def do_login_into_skillboard(self, username, password):
         try:
-            self.is_visible(self.SB_LOGO)
-            self.is_visible(self.VERIFICATION_CODE_MSG)
-            self.is_visible(self.CONFIRM_CODE_BUTTON)
-        except Exception as e:
-            self.log.error(f"---------- An error occurred in the verify_verification_code_display(): {str(e)}")
+            self.do_click(self.SIGN_IN)
+            self.log.info("---------- Sign in button is clicked on the website.")
+            self.do_clear(self.USERNAME)
+            self.do_send_text(self.USERNAME, username)
+            self.log.info(f"---------- username '{username}' is entered.")
+            self.do_clear(self.PASSWORD)
+            self.do_send_text(self.PASSWORD, password)
+            self.log.info(f"---------- password '{password}' is entered.")
+            self.do_click(self.SUBMIT)
+            self.log.info(f"---------- Sign in button is clicked.")
+            time.sleep(2)
+            self.driver.save_screenshot(".\\Reports\\" + "Sign in.png")
 
+
+        except Exception as e:
+            self.log.error(f"---------- An error occurred in the do_login_into_skillboard(): {str(e)}")
+
+    def get_home_page_title(self, title):
+        self.log.info(f"---------- title of the Home page: " + self.get_title(title))
+        return self.get_title(title)

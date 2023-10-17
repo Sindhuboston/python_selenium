@@ -42,6 +42,7 @@ class Utils:
         excel_file_path = TestData.EXCEL_FILE_PATH
         sheet_name = TestData.SHEET_NAME
         test_case_name = TestData.TESTCASE_NAME
+        #print(f"test_case_name ={test_case_name}")
 
         try:
             workbook = openpyxl.load_workbook(excel_file_path)
@@ -58,7 +59,7 @@ class Utils:
                         break
                 if row_number is not None:
                     break
-
+            #print(f"row_number ={row_number}")
 
 
             if row_number is not None:
@@ -72,7 +73,7 @@ class Utils:
                 # Print the data
                 if column_name in row_data:
                     value = row_data[column_name]
-                    print(f"column:{column_name} = {value}")
+                    print(f"{column_name} = {value}")
 
                     return value
                 else:

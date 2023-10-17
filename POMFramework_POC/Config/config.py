@@ -35,6 +35,7 @@ class TestData:
 
     URL_SKILLBOARD = "https://skillboard.org/"
     TD_SkillBoard_Workbook = "C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel_SkillBoard.xlsx"
+    TD_SkillBoard_DDT_Workbook = "C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel_SkillBoard_DDT.xlsx"
     TD_SkillBoard_Sheet = "Sheet1"
 
     TD_OTP_DDT_Workbook = "C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel_OTP_DDT.xlsx"
