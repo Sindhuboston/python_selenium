@@ -17,6 +17,7 @@ class Test_SignSB_DDT(BaseTest):
             firstname = data['firstname']
             lastname = data['lastname']
             username = data['username']
+
             email = data['email']
             password = data['password']
 

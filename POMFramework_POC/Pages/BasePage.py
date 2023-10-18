@@ -23,6 +23,12 @@ class BasePage:
         except Exception as e:
             print(f"Error taking screenshot: {str(e)}")
 
+    def wait_for_element_to_disappear(self, by_locator, timeout=10):
+        try:
+            WebDriverWait(self.driver, timeout).until_not(EC.visibility_of_element_located(by_locator))
+        except TimeoutException as e:
+            print(f"Element located by {by_locator} is still visible within the timeout: {str(e)}")
+
     def do_hover_on_element(self, by_locator):
         try:
             act_chains = ActionChains(self.driver)

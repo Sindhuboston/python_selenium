@@ -18,9 +18,13 @@ from Pages.LoginSkillBoardPage import LoginSkillBoardPage
 
 class Test_LoginSkillBoard(BaseTest):
     log = Utils.log_to_file_output()
-    TestData.set_excel_file_path(TestData.TD_SkillBoard_Workbook)
-    TestData.set_sheet_name(TestData.TD_SkillBoard_Sheet)
 
+    # Attempt to set the Excel file path and handle exceptions if the file is not found.
+    try:
+        TestData.set_excel_file_path(TestData.TD_SkillBoard_Workbook)
+        TestData.set_sheet_name(TestData.TD_SkillBoard_Sheet)
+    except FileNotFoundError:
+        raise Exception("The specified Excel file cannot be located.")
 
     def test_signup_on_skillboard(self):
         #It will search for the test case name and return the data based on the specified column.
@@ -33,6 +37,10 @@ class Test_LoginSkillBoard(BaseTest):
         username = Utils.get_data("username")
         user_email = Utils.get_data("email")
         password = Utils.get_data("password")
+
+        # Check for empty values and raise an exception if any of them are empty.
+        if not firstname or not lastname or not username or not user_email or not password:
+            raise ValueError("Some data fields are empty. Please check your test data source.")
 
         validation_results = self.pgSBLogin.do_signup_on_skillboard(firstname, lastname, username, user_email, password)
         self.log.info(f"\n\n********** Password '{password}' validations start **********\n")
