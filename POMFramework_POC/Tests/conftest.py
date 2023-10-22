@@ -2,7 +2,7 @@ from datetime import datetime
 from pathlib import Path
 import pytest
 from selenium import webdriver
-#from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from Utilities.utils import Utils
 
@@ -10,7 +10,7 @@ from Utilities.utils import Utils
 # This file contains configuration settings and fixtures for a Pytest-based automated testing framework.
 # It is responsible for initializing web drivers, configuring report generation, and defining test-related configurations.
 
-@pytest.fixture(params=["chrome","edge"], scope='class')
+@pytest.fixture(params=["chrome", "edge"], scope='class')
 def init_driver(request):
     if request.param == "chrome":
         chrome_options = webdriver.ChromeOptions()
@@ -49,6 +49,7 @@ def pytest_configure(config):
     # Get the Python version and add it to metadata
     # python_version = sys.version.split('\n')[0]
     # config._metadata['Python'] = python_version
+
 
 def pytest_html_report_title(report):
     report.title = "POC Test Report"
