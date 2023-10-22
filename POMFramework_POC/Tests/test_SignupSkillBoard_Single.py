@@ -5,6 +5,7 @@ from Tests.BaseTest import BaseTest
 from Utilities.utils import Utils
 from Pages.LoginSkillBoardPage import LoginSkillBoardPage
 
+
 # This class, 'Test_LoginSkillBoard', is a test suite designed to verify the functionality of the SkillBoard signup process.
 # It inherits setup and teardown methods from the 'BaseTest' class for test environment setup and cleanup.
 # The class contains test cases for signing up on SkillBoard and verifying various validation criteria during the signup process.
@@ -28,9 +29,8 @@ class Test_LoginSkillBoard(BaseTest):
         raise Exception("The specified Excel file cannot be located.")
 
     def test_signup_on_skillboard(self):
-        #It will search for the test case name and return the data based on the specified column.
+        # It will search for the test case name and return the data based on the specified column.
         TestData.set_testcase_name("test_signup_on_skillboard")
-
 
         self.pgSBLogin = LoginSkillBoardPage(self.driver)
         firstname = Utils.get_data("firstname")
@@ -48,7 +48,6 @@ class Test_LoginSkillBoard(BaseTest):
         # Use a list to store any assertion errors:
         assertion_errors = []
 
-
         try:
             assert validation_results["upper_case"] is True
             self.log.info("---------- Uppercase exists in new password")
@@ -56,7 +55,6 @@ class Test_LoginSkillBoard(BaseTest):
             self.driver.save_screenshot(".\\Reports\\" + "upper_case.png")
             self.log.error("---------- Uppercase validation failed: " + str(e))
             assertion_errors.append("Uppercase validation")
-
 
         try:
             assert validation_results["lower_case"] is True
@@ -77,7 +75,7 @@ class Test_LoginSkillBoard(BaseTest):
             assert validation_results["special_char"] is True
             self.log.info("---------- Special character exists in new password")
         except AssertionError as e:
-            #self.driver.save_screenshot(".\\Reports\\" + "special_char.png")
+            # self.driver.save_screenshot(".\\Reports\\" + "special_char.png")
             self.log.error("---------- Special character validation failed: " + str(e))
 
         try:
@@ -87,15 +85,14 @@ class Test_LoginSkillBoard(BaseTest):
             self.driver.save_screenshot(".\\Reports\\" + "total_chars.png")
             self.log.error("---------- Total characters validation failed: " + str(e))
 
-
         if assertion_errors:
-                #Handle the assertion errors as needed, you can raise an exception here if necessary
+            # Handle the assertion errors as needed, you can raise an exception here if necessary
             self.log.error("---------- Some validation errors occurred.")
             raise AssertionError("Assertion errors: " + ", ".join(assertion_errors))
         else:
             # If no assertion errors occurred, close the browser
             self.log.info("---------- No validation errors, closing the browser.")
-            #self.driver.close()
+            # self.driver.close()
 
     def test_successful_login_to_skillboard(self):
         TestData.set_testcase_name("test_successful_login_to_skillboard")
