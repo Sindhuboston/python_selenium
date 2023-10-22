@@ -23,6 +23,7 @@ class Test_LoginSkillBoard(BaseTest):
     try:
         TestData.set_excel_file_path(TestData.TD_SkillBoard_Workbook)
         TestData.set_sheet_name(TestData.TD_SkillBoard_Sheet)
+
     except FileNotFoundError:
         raise Exception("The specified Excel file cannot be located.")
 

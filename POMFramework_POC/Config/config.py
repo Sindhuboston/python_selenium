@@ -38,5 +38,9 @@ class TestData:
     TD_SkillBoard_DDT_Workbook = "C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel_SkillBoard_DDT.xlsx"
     TD_SkillBoard_Sheet = "Sheet1"
 
+    TD_Sheet_part1 = "part1"
+    TD_Sheet_part2 = "part2"
+
+
     TD_OTP_DDT_Workbook = "C:\\Users\\sindh\\PycharmProjects\\POMFramework_POC\\TestData\\TDexcel_OTP_DDT.xlsx"
     TD_OTP_DDT_Sheet = "Sheet1"
